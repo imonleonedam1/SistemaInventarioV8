@@ -18,6 +18,7 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.AddScoped<IUnidadTrabajo,UnidadTrabajo>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

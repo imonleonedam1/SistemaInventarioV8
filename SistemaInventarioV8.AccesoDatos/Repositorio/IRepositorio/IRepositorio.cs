@@ -9,7 +9,7 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio.IRepositorio
 {
     public interface IRepositorio<T> where T : class
     {
-        T Obtener(int id);
+        Task<T> Obtener(int id);
 
         Task<IEnumerable<T>> ObtenerTodods(
             Expression<Func<T,bool>> filtro = null,
