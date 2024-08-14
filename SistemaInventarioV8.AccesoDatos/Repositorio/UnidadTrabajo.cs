@@ -11,7 +11,8 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio
     public class UnidadTrabajo : IUnidadTrabajo
     {
         private readonly ApplicationDbContext _db;
-        public IBodegaRepositorio  Bodega {  get; private set; }
+        public IBodegaRepositorio Bodega {  get; private set; } 
+
         public UnidadTrabajo(ApplicationDbContext db)
         {
             _db = db;

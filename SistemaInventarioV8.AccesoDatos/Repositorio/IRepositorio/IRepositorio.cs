@@ -11,7 +11,7 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio.IRepositorio
     {
         Task<T> Obtener(int id);
 
-        Task<IEnumerable<T>> ObtenerTodods(
+        Task<IEnumerable<T>> ObtenerTodos(
             Expression<Func<T,bool>> filtro = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string incluirPropiedades = null,

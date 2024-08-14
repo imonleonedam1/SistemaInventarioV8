@@ -24,7 +24,7 @@ private readonly ApplicationDbContext _db;
             if (bodegaBD != null) { 
                 bodegaBD.Nombre = bodega.Nombre;
                 bodegaBD.Descripcion = bodega.Descripcion;
-                bodega.Estado = bodega.Estado;
+                bodegaBD.Estado = bodega.Estado;
                 _db.SaveChanges();
             }
         }
