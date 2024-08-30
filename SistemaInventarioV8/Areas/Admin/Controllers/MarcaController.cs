@@ -52,7 +52,7 @@ namespace SistemaInventarioV8.Areas.Admin.Controllers
                 }
                 else
                 {
-                    _unidadTrabajo.Marca.Acualizar(marca);
+                    _unidadTrabajo.Marca.Actualizar(marca);
                     TempData[DS.Exitosa] = "Marca actualizada exitosamente";
                 }
                 await _unidadTrabajo.Guardar();

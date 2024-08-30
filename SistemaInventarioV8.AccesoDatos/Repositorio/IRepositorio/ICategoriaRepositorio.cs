@@ -10,6 +10,6 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio.IRepositorio
     public interface ICategoriaRepositorio : IRepositorio<Categoria>
     {
 
-        void Acualizar(Categoria categoria);
+        void Actualizar(Categoria categoria);
     }
 }

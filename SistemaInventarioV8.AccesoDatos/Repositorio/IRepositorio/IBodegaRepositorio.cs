@@ -10,6 +10,6 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio.IRepositorio
     public interface IBodegaRepositorio : IRepositorio<Bodega>
     {
 
-        void Acualizar(Bodega bodega);
+        void Actualizar(Bodega bodega);
     }
 }

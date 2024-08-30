@@ -17,7 +17,7 @@ private readonly ApplicationDbContext _db;
         {
             _db = db;
         }
-        public void Acualizar(Bodega bodega)
+        public void Actualizar(Bodega bodega)
         {
             var bodegaBD = _db.Bodegas.FirstOrDefault(b => b.Id == bodega.Id);
 

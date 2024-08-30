@@ -17,7 +17,7 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio
         {
             _db = db;
         }
-        public void Acualizar(Categoria categoria)
+        public void Actualizar(Categoria categoria)
         {
             var categoriaBD = _db.Categorias.FirstOrDefault(b => b.Id == categoria.Id);
 

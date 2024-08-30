@@ -10,6 +10,6 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio.IRepositorio
     public interface IMarcaRepositorio : IRepositorio<Marca>
     {
 
-        void Acualizar(Marca marca);
+        void Actualizar(Marca marca);
     }
 }

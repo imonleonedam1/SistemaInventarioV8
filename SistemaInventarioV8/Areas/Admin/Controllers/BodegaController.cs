@@ -52,7 +52,7 @@ namespace SistemaInventarioV8.Areas.Admin.Controllers
                 }
                 else
                 {
-                    _unidadTrabajo.Bodega.Acualizar(bodega);
+                    _unidadTrabajo.Bodega.Actualizar(bodega);
                     TempData[DS.Exitosa] = "Bodega actualizada exitosamente";
                 }
                 await _unidadTrabajo.Guardar();

@@ -17,7 +17,7 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio
         {
             _db = db;
         }
-        public void Acualizar(Marca marca)
+        public void Actualizar(Marca marca)
         {
             var marcaBD = _db.Marcas.FirstOrDefault(b => b.Id == marca.Id);
 

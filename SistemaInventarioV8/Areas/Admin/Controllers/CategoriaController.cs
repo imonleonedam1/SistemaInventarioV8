@@ -52,7 +52,7 @@ namespace SistemaInventarioV8.Areas.Admin.Controllers
                 }
                 else
                 {
-                    _unidadTrabajo.Categoria.Acualizar(categoria);
+                    _unidadTrabajo.Categoria.Actualizar(categoria);
                     TempData[DS.Exitosa] = "Categoria actualizada exitosamente";
                 }
                 await _unidadTrabajo.Guardar();
