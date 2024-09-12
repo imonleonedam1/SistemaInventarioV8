@@ -14,9 +14,9 @@ namespace SistemaInventarioV8.Modelos
         [Required(ErrorMessage ="Nombre es requerido")]
         [MaxLength(80)]
         public string Nombres { get; set; }
-        [Required(ErrorMessage = "Apellido es requerido")]
+        [Required(ErrorMessage = "Apellidos es requerido")]
         [MaxLength(80)]
-        public string Apellido { get; set; }
+        public string Apellidos { get; set; }
         [Required(ErrorMessage = "Direccion es requerido")]
         [MaxLength(200)]
         public string Direccion { get; set; }

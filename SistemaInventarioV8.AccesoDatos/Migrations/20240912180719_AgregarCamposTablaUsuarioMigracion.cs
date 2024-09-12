@@ -11,7 +11,7 @@ namespace SistemaInventarioV8.AccesoDatos.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Apellido",
+                name: "Apellidos",
                 table: "AspNetUsers",
                 type: "nvarchar(80)",
                 maxLength: 80,
@@ -58,7 +58,7 @@ namespace SistemaInventarioV8.AccesoDatos.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Apellido",
+                name: "Apellidos",
                 table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
