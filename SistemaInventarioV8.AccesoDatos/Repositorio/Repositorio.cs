@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SistemaInventarioV8.AccesoDatos.Data;
 using SistemaInventarioV8.AccesoDatos.Repositorio.IRepositorio;
+using SistemaInventarioV8.Modelos.Especificaciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,31 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio
             }
 
             return await query.ToListAsync();
+        }
+
+        PagedList<T> IRepositorio<T>.ObtenerTodosPaginado(Parametros parametros, Expression<Func<T, bool>> filtro, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy, string incluirPropiedades, bool isTracking)
+        {
+            IQueryable<T> query = dbSet;
+            if (filtro != null)
+            {
+                query = query.Where(filtro); // select /* from where ...
+            }
+            if (incluirPropiedades != null)
+            {
+                foreach (var incluirProp in incluirPropiedades.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(incluirProp); // devuelve datos de los modelos relacionados
+                }
+            }
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+            if (!isTracking)
+            {
+                query = query.AsNoTracking();
+            }
+            return PagedList<T>.ToPagedList(query, parametros.PageNumber, parametros.PageSize);
         }
 
         public async Task<T> ObtenerPrimero(Expression<Func<T, bool>> filtro = null, string incluirPropiedades = null, bool isTracking = true)

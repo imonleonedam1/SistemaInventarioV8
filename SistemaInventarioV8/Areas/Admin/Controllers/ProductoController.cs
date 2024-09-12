@@ -85,12 +85,12 @@ namespace SistemaInventarioV8.Areas.Admin.Controllers
                         string fileName = Guid.NewGuid().ToString();
                         string extension = Path.GetExtension(files[0].FileName);
 
-                        // borrar imagen anterior
+                        // borrar imagen anterior 
                         var anteriorFile = Path.Combine(upload, objProducto.ImagenUrl);
-                        if (System.IO.File.Exists(anteriorFile))
-                        {
-                            System.IO.File.Delete(anteriorFile);
-                        }
+                            if (System.IO.File.Exists(anteriorFile))
+                            {
+                                System.IO.File.Delete(anteriorFile);
+                            } 
                         using (var fileStream = new FileStream(Path.Combine(upload, fileName + extension), FileMode.Create))
                         {
                             files[0].CopyTo(fileStream);
