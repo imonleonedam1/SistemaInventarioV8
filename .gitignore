@@ -482,3 +482,8 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+
+SistemaInventarioV8/obj
+SistemaInventarioV8/bin 
+SistemaInventarioV8/appsettings.json
