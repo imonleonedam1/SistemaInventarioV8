@@ -487,3 +487,7 @@ $RECYCLE.BIN/
 SistemaInventarioV8/obj
 SistemaInventarioV8/bin 
 SistemaInventarioV8/appsettings.json
+
+obj
+bin 
+appsettings.json
