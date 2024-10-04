@@ -20,8 +20,8 @@ namespace SistemaInventarioV8.Modelos
         public string Descripcion { get; set; }
         [Required(ErrorMessage = "Precio es Requerido")]
         public double Precio { get; set; }
-        [Required(ErrorMessage = "Coste es Requerido")]
-        public double Coste { get; set; }
+        [Required(ErrorMessage = "Costo es Requerido")]
+        public double Costo { get; set; }
         public string ImagenUrl { get; set; }
         [Required(ErrorMessage = "Estado es Requerido")]
         public bool Estado { get; set; }

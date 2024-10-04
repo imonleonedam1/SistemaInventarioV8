@@ -41,9 +41,9 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Coste</label>
-                            <input asp-for="Producto.Coste" class="form-control" />
-                            <span asp-validation-for="Producto.Coste" class="text-danger"></span>
+                            <label>Costo</label>
+                            <input asp-for="Producto.Costo" class="form-control" />
+                            <span asp-validation-for="Producto.Costo" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -86,7 +86,7 @@
                         <div class="col-md-6">
                             <label>Producto Padre</label>
                             <select asp-for="Producto.PadreId" asp-items="@Model.PadreLista" class="form-select">
-                                <option disabled selected>-- Seleccione un producto--</option>
+                                <option disabled selected>-- Seleccione un producto padre--</option>
                             </select> 
                         </div>
                     </div>
@@ -122,7 +122,7 @@
             <div class="col-4">
                 @if(Model.Producto.Id !=0)
                 {
-                    <img src="@DS.ImagenRuta@Model.Producto.ImagenUrl" width="100%" style="border-radius_5px; border:1px solid #bbb"/>
+                    <img src="@DS.ImagenRuta@Model.Producto.ImagenUrl" width="100%" style="border-radius:5px; border:1px solid #bbb"/>
                 }
             </div>
         </div>

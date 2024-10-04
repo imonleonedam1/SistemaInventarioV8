@@ -31,7 +31,7 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio
                 productoBD.Descripcion = producto.Descripcion;
                 productoBD.Estado = producto.Estado;
                 productoBD.Precio = producto.Precio;
-                productoBD.Coste = producto.Coste;
+                productoBD.Costo = producto.Costo;
                 productoBD.CategoriaId = producto.CategoriaId;
                 productoBD.MarcaId = producto.MarcaId;
                 productoBD.PadreId = producto.PadreId;

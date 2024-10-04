@@ -255,6 +255,32 @@ namespace SistemaInventarioV8.AccesoDatos.Migrations
                     b.ToTable("Bodegas");
                 });
 
+            modelBuilder.Entity("SistemaInventarioV8.Modelos.BodegaProducto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BodegaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BodegaId");
+
+                    b.HasIndex("ProductoId");
+
+                    b.ToTable("BodegasProductos");
+                });
+
             modelBuilder.Entity("SistemaInventarioV8.Modelos.Categoria", b =>
                 {
                     b.Property<int>("Id")
@@ -279,6 +305,119 @@ namespace SistemaInventarioV8.AccesoDatos.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categorias");
+                });
+
+            modelBuilder.Entity("SistemaInventarioV8.Modelos.Inventario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BodegaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaFinal")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaInicial")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UsuarioAplicacionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BodegaId");
+
+                    b.HasIndex("UsuarioAplicacionId");
+
+                    b.ToTable("Inventarios");
+                });
+
+            modelBuilder.Entity("SistemaInventarioV8.Modelos.InventarioDetalle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InventarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StockAnterior")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InventarioId");
+
+                    b.HasIndex("ProductoId");
+
+                    b.ToTable("InventarioDetalles");
+                });
+
+            modelBuilder.Entity("SistemaInventarioV8.Modelos.KardexInventario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BodegaProductoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Costo")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Detalle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StockAnterior")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
+
+                    b.Property<string>("UsuarioAplicacionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BodegaProductoId");
+
+                    b.HasIndex("UsuarioAplicacionId");
+
+                    b.ToTable("KardexInventarios");
                 });
 
             modelBuilder.Entity("SistemaInventarioV8.Modelos.Marca", b =>
@@ -318,7 +457,7 @@ namespace SistemaInventarioV8.AccesoDatos.Migrations
                     b.Property<int>("CategoriaId")
                         .HasColumnType("int");
 
-                    b.Property<double>("Coste")
+                    b.Property<double>("Costo")
                         .HasColumnType("float");
 
                     b.Property<string>("Descripcion")
@@ -438,6 +577,82 @@ namespace SistemaInventarioV8.AccesoDatos.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SistemaInventarioV8.Modelos.BodegaProducto", b =>
+                {
+                    b.HasOne("SistemaInventarioV8.Modelos.Bodega", "Bodega")
+                        .WithMany()
+                        .HasForeignKey("BodegaId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SistemaInventarioV8.Modelos.Producto", "Producto")
+                        .WithMany()
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Bodega");
+
+                    b.Navigation("Producto");
+                });
+
+            modelBuilder.Entity("SistemaInventarioV8.Modelos.Inventario", b =>
+                {
+                    b.HasOne("SistemaInventarioV8.Modelos.Bodega", "Bodega")
+                        .WithMany()
+                        .HasForeignKey("BodegaId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SistemaInventarioV8.Modelos.UsuarioAplicacion", "UsuarioAplicacion")
+                        .WithMany()
+                        .HasForeignKey("UsuarioAplicacionId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Bodega");
+
+                    b.Navigation("UsuarioAplicacion");
+                });
+
+            modelBuilder.Entity("SistemaInventarioV8.Modelos.InventarioDetalle", b =>
+                {
+                    b.HasOne("SistemaInventarioV8.Modelos.Inventario", "Inventario")
+                        .WithMany()
+                        .HasForeignKey("InventarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SistemaInventarioV8.Modelos.Producto", "Producto")
+                        .WithMany()
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Inventario");
+
+                    b.Navigation("Producto");
+                });
+
+            modelBuilder.Entity("SistemaInventarioV8.Modelos.KardexInventario", b =>
+                {
+                    b.HasOne("SistemaInventarioV8.Modelos.BodegaProducto", "BodegaProducto")
+                        .WithMany()
+                        .HasForeignKey("BodegaProductoId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SistemaInventarioV8.Modelos.UsuarioAplicacion", "UsuarioAplicacion")
+                        .WithMany()
+                        .HasForeignKey("UsuarioAplicacionId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("BodegaProducto");
+
+                    b.Navigation("UsuarioAplicacion");
                 });
 
             modelBuilder.Entity("SistemaInventarioV8.Modelos.Producto", b =>

@@ -18,7 +18,7 @@ namespace SistemaInventarioV8.AccesoDatos.Configuracion
             builder.Property(x => x.Descripcion).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Estado).IsRequired();
             builder.Property(x => x.Precio).IsRequired();
-            builder.Property(x => x.Coste).IsRequired();
+            builder.Property(x => x.Costo).IsRequired();
             builder.Property(x => x.CategoriaId).IsRequired();
             builder.Property(x => x.MarcaId).IsRequired();
             builder.Property(x => x.ImagenUrl).IsRequired(false);
