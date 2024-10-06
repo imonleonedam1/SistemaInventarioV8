@@ -27,7 +27,7 @@ namespace SistemaInventarioV8.Areas.Admin.Controllers
 
         public async Task<IActionResult> Upsert(int? id)
         {
-            ProductoVM productoVM = new()
+            ProductoVM productoVM = new ProductoVM()
             {
                 Producto = new Producto(),
                 CategoriaLista = _unidadTrabajo.Producto.ObtenerTodosDropdownLista("Categoria"),
