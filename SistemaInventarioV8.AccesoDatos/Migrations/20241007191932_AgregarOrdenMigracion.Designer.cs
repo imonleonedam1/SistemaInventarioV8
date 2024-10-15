@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaInventarioV8.AccesoDatos.Data;
 
@@ -11,9 +12,11 @@ using SistemaInventarioV8.AccesoDatos.Data;
 namespace SistemaInventarioV8.AccesoDatos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241007191932_AgregarOrdenMigracion")]
+    partial class AgregarOrdenMigracion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -604,35 +607,6 @@ namespace SistemaInventarioV8.AccesoDatos.Migrations
                     b.ToTable("Ordenes");
                 });
 
-            modelBuilder.Entity("SistemaInventarioV8.Modelos.OrdenDetalle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrdenId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Precio")
-                        .HasColumnType("float");
-
-                    b.Property<int>("ProductoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrdenId");
-
-                    b.HasIndex("ProductoId");
-
-                    b.ToTable("OrdenDetalles");
-                });
-
             modelBuilder.Entity("SistemaInventarioV8.Modelos.Producto", b =>
                 {
                     b.Property<int>("Id")
@@ -895,25 +869,6 @@ namespace SistemaInventarioV8.AccesoDatos.Migrations
                         .IsRequired();
 
                     b.Navigation("UsuarioAplicacion");
-                });
-
-            modelBuilder.Entity("SistemaInventarioV8.Modelos.OrdenDetalle", b =>
-                {
-                    b.HasOne("SistemaInventarioV8.Modelos.Orden", "Orden")
-                        .WithMany()
-                        .HasForeignKey("OrdenId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("SistemaInventarioV8.Modelos.Producto", "Producto")
-                        .WithMany()
-                        .HasForeignKey("ProductoId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Orden");
-
-                    b.Navigation("Producto");
                 });
 
             modelBuilder.Entity("SistemaInventarioV8.Modelos.Producto", b =>
