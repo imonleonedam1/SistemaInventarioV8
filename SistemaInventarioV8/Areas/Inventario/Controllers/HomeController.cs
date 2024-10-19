@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using SistemaInventarioV8.AccesoDatos;
+using Microsoft.AspNetCore.Mvc; 
 using SistemaInventarioV8.AccesoDatos.Repositorio.IRepositorio;
 using SistemaInventarioV8.Modelos;
 using SistemaInventarioV8.Modelos.Especificaciones;
@@ -46,7 +45,7 @@ namespace SistemaInventarioV8.Areas.Inventario.Controllers
             {
                 busqueda = busquedaActual;
             }
-            ViewData["busquedaActual"] = busqueda;
+            ViewData["BusquedaActual"] = busqueda;
 
             if (pageNumber < 1) { pageNumber = 1; }
 
@@ -94,7 +93,7 @@ namespace SistemaInventarioV8.Areas.Inventario.Controllers
             {
                 carroCompraVM.Stock = bodegaProducto.Cantidad;
             }
-            carroCompraVM.CarroCompra = new AccesoDatos.CarroCompra()
+            carroCompraVM.CarroCompra = new CarroCompra()
             {
                 Producto = carroCompraVM.Producto,
                 ProductoId = carroCompraVM.Producto.Id

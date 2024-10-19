@@ -11,5 +11,7 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio.IRepositorio
     {
 
         void Actualizar(Orden orden);
+        void ActualizarEstado(int id, string ordenEstado, string pagoEstado);
+        void ActualizarPagoStripeId(int id, string sessionId, string transaccionId);
     }
 }

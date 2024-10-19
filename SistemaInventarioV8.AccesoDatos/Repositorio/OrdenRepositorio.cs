@@ -21,5 +21,32 @@ namespace SistemaInventarioV8.AccesoDatos.Repositorio
         {
             _db.Update(orden);
         }
+
+        public void ActualizarEstado(int id, string ordenEstado, string pagoEstado)
+        {
+            var ordenBD = _db.Ordenes.FirstOrDefault(o => o.Id == id);
+            if (ordenBD != null)
+            {
+                ordenBD.Estado = ordenEstado;
+                ordenBD.EstadoPago = pagoEstado;
+            }
+        }
+
+        public void ActualizarPagoStripeId(int id, string sessionId, string transaccionId)
+        {
+            var ordenBD = _db.Ordenes.FirstOrDefault(o => o.Id == id);
+            if (ordenBD != null)
+            {
+                if (!String.IsNullOrEmpty(sessionId))
+                {
+                    ordenBD.SessionId = sessionId;
+                }
+                if (!String.IsNullOrEmpty(transaccionId))
+                {
+                    ordenBD.TransaccionId = transaccionId;
+                    ordenBD.FechaPago = DateTime.Now;
+                }
+            }
+        }
     }
 }
