@@ -84,6 +84,7 @@ namespace SistemaInventarioV8.Areas.Admin.Controllers
                     todos = todos.Where(o => o.Estado == DS.EstadoEnviado);
                     break;
                 default: 
+                    todos = todos.Where(o => o.Estado != DS.EstadoPendiente);
                     break;
             }
 

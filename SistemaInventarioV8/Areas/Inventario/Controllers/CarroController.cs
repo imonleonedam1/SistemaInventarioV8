@@ -180,7 +180,7 @@ namespace SistemaInventarioV8.Areas.Inventario.Controllers
             var usuario = await _unidadTrabajo.UsuarioAplicacion.ObtenerPrimero(u => u.Id == claim.Value);
             var options = new SessionCreateOptions
             {
-                SuccessUrl = _webUrl + $"inventario/carro/OrdenConfirmacion/id={carroCompraVM.Orden.Id}",
+                SuccessUrl = _webUrl + $"inventario/carro/OrdenConfirmacion?id={carroCompraVM.Orden.Id}",
                 CancelUrl = _webUrl + "inventario/carro/index",
                 LineItems = new List<SessionLineItemOptions>(),
                 Mode = "payment",
